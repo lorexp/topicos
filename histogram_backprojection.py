@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 
 
 # Abre a imagem
-original_image = cv2.imread("images/estadio.jpg")
+#original_image = cv2.imread("images/estadio.jpg")
 #original_image = cv2.imread("images/coins.jpg")
-#original_image = cv2.imread("images/goalkeeper.jpg")
+original_image = cv2.imread("images/goalkeeper.jpg")
 hsv_original = cv2.cvtColor(original_image, cv2.COLOR_BGR2HSV)
 
 # Abre a imagem que gera o histograma
-roi_image = cv2.imread("images/grama.jpg")
+#roi_image = cv2.imread("images/grama.jpg")
 #roi_image = cv2.imread("images/bronze.jpg")
-#roi_image = cv2.imread("images/pitch_ground.jpg")
+roi_image = cv2.imread("images/pitch_ground.jpg")
 
 hsv_roi = cv2.cvtColor(roi_image, cv2.COLOR_BGR2HSV)
 

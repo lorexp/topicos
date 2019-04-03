@@ -13,7 +13,7 @@ def show_abs(I, plot_title):
     plt.imshow(abs(I), cm.gray)
 
 #Reading of the image into numpy array:
-A0 = cv2.imread('images/moon1.jpg', 0)
+A0 = cv2.imread('images/xray.jpg', 0)
 A0 = np.float64(A0)
 A0 -= np.amin(A0)#map values to the (0, 255) range
 A0 *= 255.0/np.amax(A0)
@@ -35,12 +35,22 @@ A = abs(A) #Get rid of negative values
 
 A *= 255.0/np.amax(A)
 
+# Local Histogram Equalization with OpenCV:
+A_cv2 = cv2.equalizeHist(A.astype(np.uint8))
+
+plt.figure(pic_n)
+pic_n += 1
+plt.subplot(1,2,1)
+show_abs(Lap, 'Laplacian')
+plt.subplot(1,2,2)
+show_abs(Laps, 'Scaled Laplacian')
+
 plt.figure(pic_n)
 pic_n += 1
 plt.subplot(1,3,1)
 show_abs(A0, 'Original image')
 plt.subplot(1,3,2)
-show_abs(Laps, 'Scaled Laplacian')
-plt.subplot(1,3,3)
 show_abs(A, 'Laplacian filtered img')
+plt.subplot(1,3,3)
+show_abs(A_cv2, 'Local Hist equalized img')
 plt.show()
